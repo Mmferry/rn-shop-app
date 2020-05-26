@@ -20,8 +20,8 @@ const ProductItem = (props) => {
 
   return (
     <View style={styles.product}>
-        <TouchableCmp onPress={props.onViewDetails} useForeground>
-      <View style={styles.touchable}>
+      <TouchableCmp onPress={props.onViewDetails} useForeground>
+        <View style={styles.touchable}>
           <View style={styles.imageContainer}>
             <Image style={styles.image} source={{ uri: props.image }} />
           </View>
@@ -41,8 +41,8 @@ const ProductItem = (props) => {
               onPress={props.onAddToCart}
             />
           </View>
-      </View>
-        </TouchableCmp>
+        </View>
+      </TouchableCmp>
     </View>
   );
 };
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   touchable: {
     overflow: "hidden",
-    borderRadius: 10
+    borderRadius: 10,
   },
   imageContainer: {
     width: "100%",
@@ -78,14 +78,16 @@ const styles = StyleSheet.create({
   },
   details: {
     alignItems: "center",
-    height: "15%",
+    height: "20%",
     padding: 10,
   },
   title: {
     fontSize: 18,
     marginVertical: 4,
+    fontFamily: "open-sans"
   },
   price: {
+    fontFamily: "open-sans",
     fontSize: 14,
     color: "#888",
   },
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "25%",
+    height: "20%",
     paddingHorizontal: 20,
   },
 });

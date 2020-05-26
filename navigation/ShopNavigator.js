@@ -11,7 +11,13 @@ const Stack = createStackNavigator();
 const ShopNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{ gestureEnabled: false, headerBackTitle: "back" }}
+      screenOptions={{
+        gestureEnabled: false,
+        headerBackTitle: "back",
+        headerBackTitleStyle: {
+          fontFamily: "open-sans",
+        },
+      }}
     >
       <Stack.Screen
         name="Home"
@@ -19,12 +25,12 @@ const ShopNavigator = () => {
         options={{
           title: "All Products",
           headerStyle: {
-            backgroundColor: Platform.OS === "android" ? Colors.primary : "transparent",
+            backgroundColor:
+              Platform.OS === "android" ? Colors.primary : "transparent",
           },
-          headerTintColor:
-            Platform.OS === "android" ? "#fff" : Colors.primary,
+          headerTintColor: Platform.OS === "android" ? "#fff" : Colors.primary,
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontFamily: "open-sans-bold",
           },
           headerMode: "screen",
         }}
@@ -34,10 +40,10 @@ const ShopNavigator = () => {
         component={ProductDetailScreen}
         options={{
           headerStyle: {
-            backgroundColor: Platform.OS === "android" ? Colors.primary : "transparent",
+            backgroundColor:
+              Platform.OS === "android" ? Colors.primary : "transparent",
           },
-          headerTintColor:
-            Platform.OS === "android" ? "#fff" : Colors.primary,
+          headerTintColor: Platform.OS === "android" ? "#fff" : Colors.primary,
           headerTitleStyle: {
             fontWeight: "bold",
           },
@@ -47,6 +53,5 @@ const ShopNavigator = () => {
     </Stack.Navigator>
   );
 };
-
 
 export default ShopNavigator;
