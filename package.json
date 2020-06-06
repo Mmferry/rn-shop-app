@@ -5,14 +5,18 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "devtool": "npm run devtools"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.6",
+    "@react-navigation/drawer": "^5.8.2",
     "@react-navigation/native": "^5.4.2",
     "@react-navigation/stack": "^5.3.9",
     "expo": "~37.0.3",
+    "moment": "^2.26.0",
     "react": "~16.9.0",
+    "react-devtools": "^3.6.3",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-gesture-handler": "~1.6.0",
@@ -20,12 +24,14 @@
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "^2.2.0",
     "react-native-web": "~0.11.7",
+    "react-navigation-header-buttons": "^4.0.2",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0"
+    "babel-preset-expo": "~8.1.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "private": true
 }
