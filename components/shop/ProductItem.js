@@ -10,6 +10,7 @@ import {
   Platform,
 } from "react-native";
 import Colors from "../../constants/Colors";
+import Card from "../UI/Card";
 
 const ProductItem = (props) => {
   let TouchableCmp = TouchableOpacity;
@@ -19,8 +20,8 @@ const ProductItem = (props) => {
   }
 
   return (
-    <View style={styles.product}>
-      <TouchableCmp onPress={props.onViewDetails} useForeground>
+    <Card style={styles.product}>
+      <TouchableCmp onPress={props.onSelect} useForeground>
         <View style={styles.touchable}>
           <View style={styles.imageContainer}>
             <Image style={styles.image} source={{ uri: props.image }} />
@@ -30,20 +31,11 @@ const ProductItem = (props) => {
             <Text style={styles.price}>${props.price.toFixed(2)}</Text>
           </View>
           <View style={styles.actions}>
-            <Button
-              color={Colors.primary}
-              title="View Details"
-              onPress={props.onViewDetails}
-            />
-            <Button
-              color={Colors.primary}
-              title="To Cart"
-              onPress={props.onAddToCart}
-            />
+            {props.children}
           </View>
         </View>
       </TouchableCmp>
-    </View>
+    </Card>
   );
 };
 
@@ -51,13 +43,6 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   product: {
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
     height: 300,
     margin: 20,
   },
