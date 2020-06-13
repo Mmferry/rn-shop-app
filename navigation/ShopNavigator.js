@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { createCompatNavigatorFactory } from '@react-navigation/compat';
 
 import Colors from "../constants/Colors";
 import ProductsOverScreen from "../screens/shop/ProductsOverviewScreen";
@@ -11,6 +12,7 @@ import CartScreen from "../screens/shop/CartScreen";
 import OrdersScreen from "../screens/shop/OrdersScreen";
 import UserProductsScreen from "../screens/user/UserProductsScreen";
 import EditProductScreen from "../screens/user/EditProductScreen";
+import AuthScreen from "../screens/user/AuthScreen";
 
 const Stack = createStackNavigator();
 
@@ -202,4 +204,42 @@ const ShopNavigator = () => {
   );
 };
 
-export default ShopNavigator;
+const AuthNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: false,
+        headerBackTitle: "back",
+        headerBackTitleStyle: {
+          fontFamily: "open-sans",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Login"
+        component={AuthScreen}
+        options={{
+          title: "",
+          headerStyle: {
+            backgroundColor:
+              Platform.OS === "android" ? Colors.primary : "transparent",
+          },
+          headerTintColor: Platform.OS === "android" ? "#fff" : Colors.primary,
+          headerTitleStyle: {
+            fontFamily: "open-sans-bold",
+          },
+          headerMode: "screen",
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+const MainNavigator = createCompatNavigatorFactory(createStackNavigator)(
+  {
+    Auth: { screen: AuthNavigator },
+    Shop: { screen: ShopNavigator }
+  }
+);
+
+export default MainNavigator;
