@@ -14,28 +14,25 @@ export default (state = initialState, action) => {
       const addedProduct = action.product;
       const prodPrice = addedProduct.price;
       const prodTitle = addedProduct.title;
+      console.log('ADD_TO_CART', action);
+      let updatedOrNewCartItem;
 
       if (state.items[addedProduct.id]) {
         // already have the item in the cart
-        const updatedCartItem = new CartItem(
+        updatedOrNewCartItem = new CartItem(
           state.items[addedProduct.id].quantity + 1,
           prodPrice,
           prodTitle,
           state.items[addedProduct.id].sum + prodPrice
         );
-        return {
-          ...state,
-          items: { ...state.items, [addedProduct.id]: updatedCartItem },
-          totalAmount: state.totalAmount + prodPrice,
-        };
       } else {
-        const newCartItem = new CartItem(1, prodPrice, prodTitle, prodPrice);
-        return {
-          ...state,
-          items: { ...state.items, [addedProduct.id]: newCartItem },
-          totalAmount: state.totalAmount + prodPrice,
-        };
+        updatedOrNewCartItem = new CartItem(1, prodPrice, prodTitle, prodPrice);
       }
+      return {
+        ...state,
+        items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
+        totalAmount: state.totalAmount + prodPrice
+      };
     case REMOVE_FROM_CART:
       const selectedCartItem = state.items[action.pid];
       const currentQty = state.items[action.pid].quantity;
