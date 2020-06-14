@@ -5,6 +5,8 @@ import {
   FlatList,
   Platform,
   Button,
+  View,
+  Text,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -41,16 +43,28 @@ const UserProductsScreen = (props) => {
           }}
         />
       </HeaderButtons>
-    )
+    ),
   });
 
   const deleteHandler = (id) => {
-    Alert.alert('Are you sure?', 'Do you really want to delete this item?', [
-      {text: 'No', style: 'default'},
-      {text: 'Yes', style: 'destructive', onPress: () => {
-        dispatch(deleteProduct(id));
-      }}
-    ])
+    Alert.alert("Are you sure?", "Do you really want to delete this item?", [
+      { text: "No", style: "default" },
+      {
+        text: "Yes",
+        style: "destructive",
+        onPress: () => {
+          dispatch(deleteProduct(id));
+        },
+      },
+    ]);
+  };
+
+  if (userProducts.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text>Np products found!, maybe start creating some!</Text>
+      </View>
+    );
   }
 
   return (
@@ -64,11 +78,15 @@ const UserProductsScreen = (props) => {
           price={itemData.item.price}
           onSelect={() => {}}
         >
-          <Button color={Colors.primary} title="Edit" onPress={() => {
-            props.navigation.navigate("EditProduct", {
-              productId: itemData.item.id
-            })
-          }} />
+          <Button
+            color={Colors.primary}
+            title="Edit"
+            onPress={() => {
+              props.navigation.navigate("EditProduct", {
+                productId: itemData.item.id,
+              });
+            }}
+          />
           <Button
             color={Colors.primary}
             title="Delete"
@@ -82,4 +100,10 @@ const UserProductsScreen = (props) => {
 
 export default UserProductsScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  centered: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});

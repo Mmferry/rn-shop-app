@@ -75,6 +75,15 @@ const OrdersScreen = (props) => {
     );
   }
 
+  if (orders.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text>Np orders found!, maybe start ordering some!</Text>
+      </View>
+    );
+  }
+
+
   return (
     <FlatList
       onRefresh={loadOrders}
