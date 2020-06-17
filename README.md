@@ -39,6 +39,5 @@ React native (Ios - Android)
 | redux-devtools-extensiono       |                                                                  |
 
 
-Demo from app
 
-![alt text](https://github.com/Mmferry/rn-meals-app/blob/master/assets/Screen%20Recording%201441-09-24%20at%201.38.28%20PM.gif)
+![alt text]()
